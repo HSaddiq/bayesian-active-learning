@@ -1,0 +1,20 @@
+# Python artifacts
+.ipynb_checkpoints
+__pycache__
+*.egg-info
+*.so
+*.pyc
+
+# Testing / linting artifacts
+.nox
+.pytest_cache
+.coverage
+
+# data
+*.csv
+*.json
+*.pkl
+*.h5
+*.feather
+*.xls
+*.xlsx

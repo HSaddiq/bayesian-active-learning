@@ -1,0 +1,25 @@
+stages:
+  - nox
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+# Hence we keep the .nox dir which contains the venv to run the tests
+cache:
+  paths:
+    - .cache/pip
+    - .nox/
+
+nox:
+  image: python:latest
+  stage: nox
+  before_script:
+    - python -V
+    - pip install -U nox
+  script:
+    - nox
+  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
