@@ -13,6 +13,7 @@ The repository has a module `bayesian_active_learning` which contains:
 - `utils.py`: miscellaneous utility functions
 
 A series of notebooks in the `notebooks` folder investigate different aspects of the paper:
+- `00_weight_decay_tuning.ipynb`: notebook to finetune weight decay hyperparameter on validation dataset
 - `01_standard_experiment.ipynb`: Partial reconstruction of Figure 1 from the paper, using a subselection of the acquisition functions used in the paper with a relatively large batch size
 <p align="center">
   <img height="300" src="https://user-images.githubusercontent.com/19254716/213914382-26500a85-4832-4459-9329-636d3f1ef9e2.png">
