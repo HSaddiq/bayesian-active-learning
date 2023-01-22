@@ -1,9 +1,8 @@
-from functools import partial
-from typing import Callable, Optional, Tuple
+from typing import Tuple
 
 import haiku as hk
 import jax.numpy as jnp
-from jax import nn, random
+from jax import nn
 
 
 class BayesianConvNet(hk.Module):
@@ -39,18 +38,6 @@ class BayesianConvNet(hk.Module):
         logits = hk.Linear(output_size=self.num_classes)(out)
 
         return logits
-
-
-# def define_model(
-#     num_classes: int,
-#     dropout_rates: Tuple[float, float],
-#     # activation: Callable[[jnp.ndarray], jnp.ndarray] = nn.relu,
-# ) -> Callable[[jnp.ndarray], jnp.ndarray]:
-#     net = BayesianConvNet(
-#         num_classes=num_classes,
-#         activation=activation,
-#     )
-#     return partial(net, dropout_rates)
 
 
 def model(
