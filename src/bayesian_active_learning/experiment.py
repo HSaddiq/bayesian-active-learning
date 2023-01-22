@@ -76,12 +76,6 @@ def experiment_run(
         key=subkey,
     )
 
-    # import matplotlib.pyplot as plt
-
-    # plt.plot(metrics.train_accuracy_history)
-    # plt.plot(metrics.validation_accuracy_history)
-    # plt.show()
-
     pretrained_params = copy.deepcopy(params)
 
     # obtain accuracy for initially trained model on test dataset
@@ -95,11 +89,9 @@ def experiment_run(
 
     # run the active learning procedure
     for iteration in range(num_iterations):
-        # print(f"iteration {iteration+1}/{num_iterations}")
         # update train and pool dataset using acquisition function
         key, subkey = random.split(key, 2)
 
-        # print(f"Acquiring new datapoints")
         train_dataset, pool_dataset = acquire_new_data(
             jit(partial(stochastic_model.apply, params)),
             acquisition_function=acquisition_fn,
@@ -129,12 +121,6 @@ def experiment_run(
             validation_generator=validation_generator,
             key=subkey,
         )
-
-        # import matplotlib.pyplot as plt
-
-        # plt.plot(metrics.train_accuracy_history)
-        # plt.plot(metrics.validation_accuracy_history)
-        # plt.show()
 
         # obtain test accuracy
         test_accuracy_history.append(
